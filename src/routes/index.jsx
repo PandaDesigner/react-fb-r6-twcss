@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Home } from '../pages/Home';
@@ -7,8 +8,27 @@ import { Navbar } from '../components/Navbar';
 import { RequierAuth } from '../components/RequierAuth';
 import { Registre } from '../pages/Registre';
 import { Dashboard } from '../pages/Dashboard';
+import { UserContext } from '../context/UserProvider';
 
 export const Rutas = () => {
+  const { user } = useContext(UserContext);
+
+  if (user === false) {
+    return (
+      <div
+        style={{
+          width: '100%',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <h1>Cargando...</h1>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />

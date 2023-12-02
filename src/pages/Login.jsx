@@ -19,6 +19,7 @@ export const Login = () => {
     } catch (error) {
       console.log(error);
       console.log('%c' + error, 'background:red; color:white');
+      navigate('/login');
     }
   };
 
